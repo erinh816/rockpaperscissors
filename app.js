@@ -21,27 +21,29 @@ function playRound(playerSelection, computerSelection) {
   let result;
   let player = playerSelection();
   let comp = computerSelection();
+  console.log(player);
+  console.log(comp);
   if (player === "paper") {
     if (comp === "rock") {
-      return "player wins";
+      return "player win";
     } else if (comp === "scissors") {
-      return "comp wins";
-    } else {
-      return "tie";
-    }
-  } else if (player === "scissors") {
-    if (comp === "rock") {
-      return "comp wins";
-    } else if (comp === "paper") {
-      return "player wins";
+      return "player lose";
     } else {
       return "tie";
     }
   } else if (player === "rock") {
     if (comp === "paper") {
-      return "comp wins";
+      return "player lose";
     } else if (comp === "scissors") {
-      return "player wins";
+      return "player win";
+    } else {
+      return "tie";
+    }
+  } else if (player === "scissors") {
+    if (comp === "rock") {
+      return "player lose";
+    } else if (comp === "paper") {
+      return "player win";
     } else {
       return "tie";
     }
@@ -53,10 +55,9 @@ function getComputerChoice() {
   let compChoice = resultarray[Math.floor(Math.random() * resultarray.length)];
   return compChoice;
 }
-console.log(getComputerChoice());
 
 function getPlayerChoice() {
-  let playerChoice = prompt("rock paper scissors?");
+  let playerChoice = prompt("?");
   //   let result2 = playerChoice.toLowerCase();
   return playerChoice;
 }
