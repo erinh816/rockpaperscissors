@@ -18,24 +18,51 @@
 
 function playRound(playerSelection, computerSelection) {
   // your code here!
-  if (playerSelection === "rock" && computerSelection === "rock") {
-    return "tie";
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    return "win";
-  } else {
-    return "lose";
+  let result;
+  let player = playerSelection();
+  let comp = computerSelection();
+  if (player === "paper") {
+    if (comp === "rock") {
+      return "player wins";
+    } else if (comp === "scissors") {
+      return "comp wins";
+    } else {
+      return "tie";
+    }
+  } else if (player === "scissors") {
+    if (comp === "rock") {
+      return "comp wins";
+    } else if (comp === "paper") {
+      return "player wins";
+    } else {
+      return "tie";
+    }
+  } else if (player === "rock") {
+    if (comp === "paper") {
+      return "comp wins";
+    } else if (comp === "scissors") {
+      return "player wins";
+    } else {
+      return "tie";
+    }
   }
 }
 
 function getComputerChoice() {
   let resultarray = ["rock", "paper", "scissors"];
-  let result = resultarray[Math.floor(Math.random() * resultarray.length)];
-  return result;
+  let compChoice = resultarray[Math.floor(Math.random() * resultarray.length)];
+  return compChoice;
 }
 console.log(getComputerChoice());
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function getPlayerChoice() {
+  let playerChoice = prompt("rock paper scissors?");
+  //   let result2 = playerChoice.toLowerCase();
+  return playerChoice;
+}
 
-//need to switch to callback or promoses to solve asynchronous issues
+// const playerSelection = "rock";
+// const computerSelection = getComputerChoice();
+console.log(playRound(getPlayerChoice, getComputerChoice));
+
+//need to switch to callback or promises to solve asynchronous issues
